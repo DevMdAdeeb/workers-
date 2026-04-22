@@ -2,15 +2,7 @@
 session_start();
 if (!isset($_SESSION['user_id']) || !isset($_GET['pid'])) { die("غير مسموح بالدخول"); }
 
-$host = 'localhost';
-$db   = 'sams_workers'; 
-$user = 'sams_workers';
-$pass = 'Mohammed7134';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8mb4", $user, $pass);
-    $pdo->exec("set names utf8mb4");
-} catch (PDOException $e) { die("خطأ اتصال"); }
+require_once 'config/db.php';
 
 $pid = $_GET['pid'];
 $uid = $_SESSION['user_id'];
