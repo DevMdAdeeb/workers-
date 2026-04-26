@@ -67,25 +67,25 @@ $days = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء",
         <div class="header-section d-flex justify-content-between align-items-center">
             <div>
                 <h1 class="fw-bold mb-0" style="color: var(--print-primary);">كشف حساب مالي</h1>
-                <p class="text-muted mb-0">سند استلام مستحقات فنية</p>
+                <p class="text-custom-muted mb-0">سند استلام مستحقات فنية</p>
             </div>
             <div class="text-start">
                 <h5 class="fw-bold mb-1"><?= htmlspecialchars($_SESSION['username']) ?></h5>
-                <p class="small text-muted mb-0">المشروع: <?= htmlspecialchars($worker['project_name']) ?></p>
-                <p class="small text-muted mb-0">تاريخ الإصدار: <?= date('Y-m-d') ?></p>
+                <p class="small text-custom-muted mb-0">المشروع: <?= htmlspecialchars($worker['project_name']) ?></p>
+                <p class="small text-custom-muted mb-0">تاريخ الإصدار: <?= date('Y-m-d') ?></p>
             </div>
         </div>
 
         <div class="info-grid">
             <div class="info-box">
-                <h6 class="fw-bold text-muted text-uppercase small mb-3 border-bottom pb-2">بيانات المستلم (العامل/الفني)</h6>
+                <h6 class="fw-bold text-custom-muted text-uppercase small mb-3 border-bottom pb-2">بيانات المستلم (العامل/الفني)</h6>
                 <p class="mb-2"><strong>الاسم:</strong> <span class="fs-5 fw-bold"><?= htmlspecialchars($worker['worker_name']) ?></span></p>
                 <p class="mb-2"><strong>الاختصاص:</strong> <?= htmlspecialchars($worker['task_desc']) ?></p>
                 <p class="mb-2"><strong>الهاتف:</strong> <?= htmlspecialchars($worker['phone'] ?: '-') ?></p>
                 <p class="mb-0"><strong>نوع الدوام:</strong> <?= ($worker['work_period'] == 'half' ? 'نصف يوم' : 'يوم كامل') ?></p>
             </div>
             <div class="info-box">
-                <h6 class="fw-bold text-muted text-uppercase small mb-3 border-bottom pb-2">ملخص الوضع المالي</h6>
+                <h6 class="fw-bold text-custom-muted text-uppercase small mb-3 border-bottom pb-2">ملخص الوضع المالي</h6>
                 <p class="mb-2 d-flex justify-content-between"><span>إجمالي قيمة الاتفاق:</span> <span class="fw-bold"><?= formatCurrency($worker['total_amount']) ?></span></p>
                 <p class="mb-2 d-flex justify-content-between text-success"><span>إجمالي المدفوعات:</span> <span class="fw-bold"><?= formatCurrency($total_paid) ?></span></p>
                 <hr>
@@ -106,16 +106,16 @@ $days = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء",
             <tbody>
                 <tr>
                     <td><?= $worker['entry_date'] ?></td>
-                    <td class="small text-muted"><?= $days[date('w', strtotime($worker['entry_date']))] ?></td>
+                    <td class="small text-custom-muted"><?= $days[date('w', strtotime($worker['entry_date']))] ?></td>
                     <td>دفعة أولى (سلفة عند التسجيل في الموقع)</td>
                     <td class="fw-bold text-start"><?= formatCurrency($worker['paid_amount']) ?></td>
                 </tr>
                 <?php foreach($all_payments as $p): ?>
                 <tr>
                     <td><?= $p['payment_date'] ?></td>
-                    <td class="small text-muted"><?= $days[date('w', strtotime($p['payment_date']))] ?></td>
+                    <td class="small text-custom-muted"><?= $days[date('w', strtotime($p['payment_date']))] ?></td>
                     <td>سحبة نقدية مرحلية</td>
-                    <td class="fw-bold text-primary text-start"><?= formatCurrency($p['amount']) ?></td>
+                    <td class="fw-bold text-custom-accent text-start"><?= formatCurrency($p['amount']) ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -129,16 +129,16 @@ $days = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء",
 
         <div class="mt-5 pt-5 row">
             <div class="col-4 border-top pt-3 text-center">
-                <p class="small text-muted mb-4">توقيع المستلم (إقرار بالاستلام)</p>
+                <p class="small text-custom-muted mb-4">توقيع المستلم (إقرار بالاستلام)</p>
                 <div class="mt-5" style="border-bottom: 1px dashed #ccc; width: 150px; margin: 0 auto;"></div>
             </div>
             <div class="col-4 offset-4 border-top pt-3 text-center">
-                <p class="small text-muted mb-4">توقيع الإدارة / المحاسب</p>
+                <p class="small text-custom-muted mb-4">توقيع الإدارة / المحاسب</p>
                 <div class="mt-5" style="border-bottom: 1px dashed #ccc; width: 150px; margin: 0 auto;"></div>
             </div>
         </div>
 
-        <div class="mt-auto pt-5 text-center small text-muted opacity-50">
+        <div class="mt-auto pt-5 text-center small text-custom-muted opacity-50">
             هذه الوثيقة صادرة عن النظام الإلكتروني وتعتبر مرجعاً للمحاسبة
         </div>
     </div>

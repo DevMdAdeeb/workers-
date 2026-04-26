@@ -63,7 +63,7 @@ if ($pid && isset($_POST['get_worker_report'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="assets/style.css?v=1.3">
+    <link rel="stylesheet" href="assets/style.css?v=1.5">
 </head>
 <body class="container-fluid py-4" style="max-width: 1400px;">
 
@@ -92,14 +92,14 @@ if ($pid && isset($_POST['get_worker_report'])) {
                 ?>
             </div>
         <?php else: ?>
-            <div class="card border-0 shadow-sm p-5 text-center bg-white rounded-4 animate__animated animate__pulse glass">
-                <div class="bg-light bg-opacity-50 p-4 rounded-circle d-inline-block mx-auto mb-4">
-                    <i class="bi bi-building-add display-1 text-primary"></i>
+            <div class="card border-0 shadow-sm p-5 text-center bg-custom-card rounded-4 animate__animated animate__pulse glass">
+                <div class="bg-custom-glass bg-opacity-50 p-4 rounded-circle d-inline-block mx-auto mb-4">
+                    <i class="bi bi-building-add display-1 text-custom-accent"></i>
                 </div>
-                <h3 class="fw-bold text-dark">مرحباً بك في نظام الإعمار</h3>
-                <p class="text-muted fs-5 mb-4">ابدأ باختيار مشروع من القائمة أعلاه أو أضف مشروعاً جديداً للبدء في إدارة أعمالك</p>
+                <h3 class="fw-bold text-custom-main">مرحباً بك في نظام الإعمار</h3>
+                <p class="text-custom-muted fs-5 mb-4">ابدأ باختيار مشروع من القائمة أعلاه أو أضف مشروعاً جديداً للبدء في إدارة أعمالك</p>
                 <div class="d-flex justify-content-center gap-2">
-                    <button class="btn btn-primary px-4 py-2 fw-bold" data-bs-toggle="modal" data-bs-target="#addP">
+                    <button class="btn btn-custom-accent px-4 py-2 fw-bold" data-bs-toggle="modal" data-bs-target="#addP">
                         <i class="bi bi-plus-lg me-2"></i>إضافة مشروعك الأول
                     </button>
                 </div>
@@ -111,6 +111,6 @@ if ($pid && isset($_POST['get_worker_report'])) {
 <?php endif; ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/script.js?v=1.3"></script>
+<script src="assets/script.js?v=1.5"></script>
 </body>
 </html>

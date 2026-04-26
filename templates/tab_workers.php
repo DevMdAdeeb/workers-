@@ -1,7 +1,7 @@
 <div class="tab-pane fade" id="t-works">
     <div class="card border-0 shadow-sm mb-4">
         <div class="card-header bg-transparent border-0 pt-4 px-4">
-            <h5 class="fw-bold mb-0 text-primary"><i class="bi bi-person-plus me-2"></i>تسجيل عامل أو فني جديد</h5>
+            <h5 class="fw-bold mb-0 text-custom-accent"><i class="bi bi-person-plus me-2"></i>تسجيل عامل أو فني جديد</h5>
         </div>
         <div class="card-body p-4">
             <form method="POST" class="row g-3">
@@ -41,7 +41,7 @@
                     <input type="number" name="sufa" class="form-control border-0 py-2" placeholder="0">
                 </div>
                 <div class="col-md-12 mt-2 text-end">
-                    <button name="add_worker" class="btn btn-primary px-5 py-2 shadow-sm"><i class="bi bi-plus-circle me-1"></i>إضافة العامل</button>
+                    <button name="add_worker" class="btn btn-custom-accent px-5 py-2 shadow-sm"><i class="bi bi-plus-circle me-1"></i>إضافة العامل</button>
                 </div>
             </form>
         </div>
@@ -50,7 +50,7 @@
     <div class="card border-0 shadow-sm">
         <div class="card-header bg-transparent border-0 pt-4 px-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
             <div>
-                <h5 class="fw-bold mb-0 text-primary">كشف العمال والمدفوعات</h5>
+                <h5 class="fw-bold mb-0 text-custom-accent">كشف العمال والمدفوعات</h5>
             </div>
             <div class="search-box">
                 <i class="bi bi-search"></i>
@@ -79,25 +79,25 @@
                         ?>
                         <tr>
                             <td class="ps-4">
-                                <span class="fw-bold text-dark d-block"><?= htmlspecialchars($w['worker_name']) ?></span>
-                                <small class="text-muted"><?= htmlspecialchars($w['address'] ?: '') ?></small>
+                                <span class="fw-bold text-custom-main d-block"><?= htmlspecialchars($w['worker_name']) ?></span>
+                                <small class="text-custom-muted"><?= htmlspecialchars($w['address'] ?: '') ?></small>
                             </td>
                             <td>
                                 <a href="tel:<?= $w['phone'] ?>" class="text-decoration-none text-secondary small d-block mb-1"><i class="bi bi-telephone me-1"></i><?= htmlspecialchars($w['phone'] ?: '-') ?></a>
                                 <a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $w['phone']) ?>?text=<?= urlencode($wa_msg) ?>" target="_blank" class="badge bg-success-subtle text-success text-decoration-none fw-normal"><i class="bi bi-whatsapp me-1"></i>واتساب</a>
                             </td>
                             <td>
-                                <span class="badge bg-light text-dark border fw-normal mb-1"><?= htmlspecialchars($w['task_desc']) ?></span>
-                                <small class="text-muted d-block"><?= ($w['work_period'] == 'half' ? 'نصف يوم' : 'يوم كامل') ?></small>
+                                <span class="badge bg-custom-glass text-custom-main border fw-normal mb-1"><?= htmlspecialchars($w['task_desc']) ?></span>
+                                <small class="text-custom-muted d-block"><?= ($w['work_period'] == 'half' ? 'نصف يوم' : 'يوم كامل') ?></small>
                             </td>
                             <td>
                                 <span class="text-danger fw-bold fs-6"><?= number_format($rem) ?></span>
-                                <small class="text-muted d-block" style="font-size: 0.7rem;">من أصل <?= number_format($w['total_amount']) ?></small>
+                                <small class="text-custom-muted d-block" style="font-size: 0.7rem;">من أصل <?= number_format($w['total_amount']) ?></small>
                             </td>
-                            <td><span class="small text-muted"><?= $w['entry_date'] ?></span></td>
+                            <td><span class="small text-custom-muted"><?= $w['entry_date'] ?></span></td>
                             <td class="text-nowrap text-center pe-4">
                                 <div class="btn-group shadow-sm rounded-3 overflow-hidden">
-                                    <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#payM<?= $w['id'] ?>" title="صرف دفعة">
+                                    <button class="btn btn-sm btn-custom-accent" data-bs-toggle="modal" data-bs-target="#payM<?= $w['id'] ?>" title="صرف دفعة">
                                         <i class="bi bi-cash-stack"></i>
                                     </button>
                                     <button class="btn btn-sm btn-info text-white" data-bs-toggle="modal" data-bs-target="#histM<?= $w['id'] ?>" title="السجل">

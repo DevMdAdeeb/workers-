@@ -32,7 +32,7 @@
                         <i class="bi bi-pencil-square me-1"></i> تعديل
                     </button>
                     <div class="collapse mt-2" id="editBudget">
-                        <form method="POST" class="d-flex gap-2 p-2 bg-white bg-opacity-10 rounded-2">
+                        <form method="POST" class="d-flex gap-2 p-2 bg-custom-card bg-opacity-10 rounded-2">
                             <input type="number" name="budget" class="form-control form-control-sm border-0" value="<?= $current_budget ?>" required style="background: white !important; color: black !important;">
                             <button name="update_budget" class="btn btn-sm btn-warning fw-bold px-3">حفظ</button>
                         </form>
@@ -43,41 +43,41 @@
         </div>
 
         <div class="col-lg-4">
-            <div class="card border-0 shadow-sm bg-white mb-0 h-100">
+            <div class="card border-0 shadow-sm bg-custom-card mb-0 h-100">
                 <div class="card-body p-3">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <div>
-                            <h6 class="text-muted fw-bold mb-1 small text-uppercase">إجمالي المصروفات</h6>
-                            <h3 class="fw-bold text-dark mb-0"><?= number_format((float)$total_spent) ?> <small class="fs-6 fw-normal text-muted">ر.ي</small></h3>
+                            <h6 class="text-custom-muted fw-bold mb-1 small text-uppercase">إجمالي المصروفات</h6>
+                            <h3 class="fw-bold text-custom-main mb-0"><?= number_format((float)$total_spent) ?> <small class="fs-6 fw-normal text-custom-muted">ر.ي</small></h3>
                         </div>
                         <div class="bg-danger bg-opacity-10 p-2 rounded-2">
                             <i class="bi bi-cart-dash text-danger fs-5"></i>
                         </div>
                     </div>
-                    <div class="progress bg-light" style="height: 6px;">
+                    <div class="progress bg-custom-glass" style="height: 6px;">
                         <div class="progress-bar <?= $percent > 85 ? 'bg-danger' : 'bg-primary' ?>" style="width: <?= $percent ?>%"></div>
                     </div>
                     <div class="d-flex justify-content-between mt-1 small">
-                        <span class="text-muted">نسبة الاستهلاك</span>
-                        <span class="fw-bold <?= $percent > 85 ? 'text-danger' : 'text-primary' ?>"><?= $percent ?>%</span>
+                        <span class="text-custom-muted">نسبة الاستهلاك</span>
+                        <span class="fw-bold <?= $percent > 85 ? 'text-danger' : 'text-custom-accent' ?>"><?= $percent ?>%</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-4">
-            <div class="card border-0 shadow-sm bg-white mb-0 h-100">
+            <div class="card border-0 shadow-sm bg-custom-card mb-0 h-100">
                 <div class="card-body p-3">
                     <div class="d-flex justify-content-between align-items-start mb-2">
                         <div>
-                            <h6 class="text-muted fw-bold mb-1 small text-uppercase">المتبقي المتوفر</h6>
-                            <h3 class="fw-bold <?= $remaining >= 0 ? 'text-success' : 'text-danger' ?> mb-0"><?= number_format((float)$remaining) ?> <small class="fs-6 fw-normal text-muted">ر.ي</small></h3>
+                            <h6 class="text-custom-muted fw-bold mb-1 small text-uppercase">المتبقي المتوفر</h6>
+                            <h3 class="fw-bold <?= $remaining >= 0 ? 'text-success' : 'text-danger' ?> mb-0"><?= number_format((float)$remaining) ?> <small class="fs-6 fw-normal text-custom-muted">ر.ي</small></h3>
                         </div>
                         <div class="bg-success bg-opacity-10 p-2 rounded-2">
                             <i class="bi bi-shield-check text-success fs-5"></i>
                         </div>
                     </div>
-                    <p class="small text-muted mb-0" style="font-size: 0.75rem;">
+                    <p class="small text-custom-muted mb-0" style="font-size: 0.75rem;">
                         <i class="bi bi-info-circle me-1"></i>
                         <?= $remaining >= 0 ? 'أداء مالي جيد' : 'تجاوز للميزانية' ?>
                     </p>

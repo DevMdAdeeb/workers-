@@ -1,4 +1,4 @@
-// assets/script.js
+// assets/script.js?v=1.5
 
 document.addEventListener('DOMContentLoaded', function() {
     // Theme Switcher Logic with Sun/Moon Icons
@@ -13,13 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (theme === 'dark') {
                 icon.className = 'bi bi-sun-fill';
                 themeToggle.title = "الوضع النهاري";
-                themeToggle.classList.add('btn-warning');
-                themeToggle.classList.remove('btn-primary');
+                // We handle colors in CSS mostly now, but keep some JS logic if needed
             } else {
                 icon.className = 'bi bi-moon-stars-fill';
                 themeToggle.title = "الوضع الليلي";
-                themeToggle.classList.add('btn-primary');
-                themeToggle.classList.remove('btn-warning');
             }
         }
     }

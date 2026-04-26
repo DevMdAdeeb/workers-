@@ -2,8 +2,8 @@
     <div class="card border-0 shadow-sm mb-4 glass">
         <div class="card-header bg-transparent border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
             <div>
-                <h5 class="fw-bold mb-0 text-primary"><i class="bi bi-calendar-check me-2"></i>تحضير العمال اليومي</h5>
-                <p class="text-muted small mb-0">تسجيل حضور وغياب العمال في الموقع</p>
+                <h5 class="fw-bold mb-0 text-custom-accent"><i class="bi bi-calendar-check me-2"></i>تحضير العمال اليومي</h5>
+                <p class="text-custom-muted small mb-0">تسجيل حضور وغياب العمال في الموقع</p>
             </div>
             <form method="GET" class="d-flex gap-2">
                 <input type="hidden" name="set_project" value="<?= $pid ?>">
@@ -55,7 +55,7 @@
                     </table>
                 </div>
                 <div class="text-end mt-3">
-                    <button name="save_attendance" class="btn btn-primary px-5 shadow-sm">حفظ كشف التحضير</button>
+                    <button name="save_attendance" class="btn btn-custom-accent px-5 shadow-sm">حفظ كشف التحضير</button>
                 </div>
             </form>
         </div>

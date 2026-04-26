@@ -4,10 +4,10 @@
             <!-- Right: Brand & Project Selection -->
             <div class="d-flex align-items-center gap-3 p-2">
                 <div class="bg-primary bg-opacity-10 p-2 rounded-2 d-none d-md-block">
-                    <i class="bi bi-building text-primary fs-5"></i>
+                    <i class="bi bi-building text-custom-accent fs-5"></i>
                 </div>
-                <div style="min-width: 180px;" class="px-2">
-                    <select onchange="location.href='index.php?set_project='+this.value" class="form-select border-0 fw-bold shadow-none bg-transparent text-primary p-0 small" style="cursor: pointer; font-size: 0.9rem;">
+                <div style="min-width: 200px;" class="project-select-container">
+                    <select onchange="location.href='index.php?set_project='+this.value" class="form-select border-0 fw-bold shadow-none bg-transparent text-custom-accent p-0 small" style="cursor: pointer; font-size: 0.9rem;">
                         <option value="">-- اختر المشروع --</option>
                         <?php
                         $ps=$pdo->prepare("SELECT * FROM projects WHERE user_id = ?");
@@ -38,10 +38,10 @@
                 </button>
 
                 <!-- User Profile & Logout -->
-                <div class="d-flex align-items-center bg-light bg-opacity-50 rounded-2 px-3 py-1 gap-2 border" style="height: 38px;">
-                    <span class="small fw-bold text-dark d-none d-md-inline"><?= h($_SESSION['username']) ?></span>
+                <div class="d-flex align-items-center bg-custom-glass bg-opacity-50 rounded-2 px-3 py-1 gap-2 border" style="height: 40px;">
+                    <span class="small fw-bold text-custom-main d-none d-md-inline"><?= h($_SESSION['username']) ?></span>
                     <a href="?logout=1" class="text-danger d-flex align-items-center" title="تسجيل الخروج">
-                        <i class="bi bi-box-arrow-right fs-5"></i>
+                        <i class="bi bi-box-arrow-right fs-5" style="line-height: 1;"></i>
                     </a>
                 </div>
             </div>
@@ -53,7 +53,7 @@
 <div id="sidebar-overlay" class="sidebar-overlay"></div>
 <div id="sidebar" class="sidebar shadow-lg">
     <div class="sidebar-header">
-        <h5 class="fw-bold mb-0 text-primary">القائمة الرئيسية</h5>
+        <h5 class="fw-bold mb-0 text-custom-accent">القائمة الرئيسية</h5>
         <button id="sidebar-close" class="btn btn-sm btn-light border-0">
             <i class="bi bi-x-lg"></i>
         </button>

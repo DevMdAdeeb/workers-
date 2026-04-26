@@ -3,16 +3,16 @@
         <div class="col-md-6">
             <div class="card border-0 shadow-sm glass h-100">
                 <div class="card-header bg-transparent border-0 pt-4 px-4">
-                    <h5 class="fw-bold mb-0 text-primary"><i class="bi bi-calculator me-2"></i>محول وحدات القياس الهندسية</h5>
+                    <h5 class="fw-bold mb-0 text-custom-accent"><i class="bi bi-calculator me-2"></i>محول وحدات القياس الهندسية</h5>
                 </div>
                 <div class="card-body p-4">
                     <div class="row g-3">
                         <div class="col-12">
-                            <label class="small fw-bold text-muted mb-1">المقدار</label>
+                            <label class="small fw-bold text-custom-muted mb-1">المقدار</label>
                             <input type="number" id="conv_val" class="form-control" placeholder="أدخل الرقم هنا">
                         </div>
                         <div class="col-6">
-                            <label class="small fw-bold text-muted mb-1">من</label>
+                            <label class="small fw-bold text-custom-muted mb-1">من</label>
                             <select id="conv_from" class="form-select">
                                 <option value="m">متر (طولي)</option>
                                 <option value="cm">سنتيمتر</option>
@@ -23,7 +23,7 @@
                             </select>
                         </div>
                         <div class="col-6">
-                            <label class="small fw-bold text-muted mb-1">إلى</label>
+                            <label class="small fw-bold text-custom-muted mb-1">إلى</label>
                             <select id="conv_to" class="form-select">
                                 <option value="m">متر (طولي)</option>
                                 <option value="cm">سنتيمتر</option>
@@ -35,8 +35,8 @@
                         </div>
                         <div class="col-12 mt-4">
                             <div class="p-3 bg-primary bg-opacity-10 rounded text-center">
-                                <h4 class="fw-bold text-primary mb-0" id="conv_res">0.00</h4>
-                                <small class="text-muted">النتيجة المحسوبة</small>
+                                <h4 class="fw-bold text-custom-accent mb-0" id="conv_res">0.00</h4>
+                                <small class="text-custom-muted">النتيجة المحسوبة</small>
                             </div>
                         </div>
                     </div>
@@ -47,11 +47,11 @@
         <div class="col-md-6">
             <div class="card border-0 shadow-sm glass h-100">
                 <div class="card-header bg-transparent border-0 pt-4 px-4">
-                    <h5 class="fw-bold mb-0 text-primary"><i class="bi bi-box-seam me-2"></i>حاسبة تقدير الكميات البسيطة</h5>
+                    <h5 class="fw-bold mb-0 text-custom-accent"><i class="bi bi-box-seam me-2"></i>حاسبة تقدير الكميات البسيطة</h5>
                 </div>
                 <div class="card-body p-4 text-center py-5">
-                    <i class="bi bi-cone-striped display-1 text-muted opacity-25"></i>
-                    <p class="mt-3 text-muted">سيتم إضافة حاسبة كميات الخرسانة والدهانات في التحديث القادم.</p>
+                    <i class="bi bi-cone-striped display-1 text-custom-muted opacity-25"></i>
+                    <p class="mt-3 text-custom-muted">سيتم إضافة حاسبة كميات الخرسانة والدهانات في التحديث القادم.</p>
                 </div>
             </div>
         </div>

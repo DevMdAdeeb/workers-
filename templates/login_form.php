@@ -30,7 +30,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" name="login" id="submitBtn" class="btn btn-primary w-100 py-2 fw-bold shadow-sm mb-3">دخول للنظام</button>
+                    <button type="submit" name="login" id="submitBtn" class="btn btn-custom-accent w-100 py-2 fw-bold shadow-sm mb-3">دخول للنظام</button>
 
                     <div class="text-center mt-3">
                         <span class="small" id="toggleText">ليس لديك حساب؟</span>
@@ -39,7 +39,7 @@
                 </form>
             </div>
             <div class="card-footer p-3 text-center border-0 bg-transparent">
-                <p class="small text-muted mb-0">&copy; <?= date('Y') ?> نظام إدارة الإعمار الاحترافي</p>
+                <p class="small text-custom-muted mb-0">&copy; <?= date('Y') ?> نظام إدارة الإعمار الاحترافي</p>
             </div>
         </div>
     </div>

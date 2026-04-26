@@ -1,8 +1,8 @@
 <div class="tab-pane fade" id="t-milestones">
     <div class="card border-0 shadow-sm mb-4 glass">
         <div class="card-header bg-transparent border-0 pt-4 px-4">
-            <h5 class="fw-bold mb-0 text-primary"><i class="bi bi-calendar2-week me-2"></i>مراحل إنجاز المشروع (Milestones)</h5>
-            <p class="text-muted small mb-0">تحديد المواعيد النهائية والمراحل الكبرى للمشروع</p>
+            <h5 class="fw-bold mb-0 text-custom-accent"><i class="bi bi-calendar2-week me-2"></i>مراحل إنجاز المشروع (Milestones)</h5>
+            <p class="text-custom-muted small mb-0">تحديد المواعيد النهائية والمراحل الكبرى للمشروع</p>
         </div>
         <div class="card-body p-4">
             <form method="POST" class="row g-3 mb-4">
@@ -23,7 +23,7 @@
                     </select>
                 </div>
                 <div class="col-md-2 d-flex align-items-end">
-                    <button name="add_milestone" class="btn btn-primary w-100">إضافة مرحلة</button>
+                    <button name="add_milestone" class="btn btn-custom-accent w-100">إضافة مرحلة</button>
                 </div>
             </form>
 
