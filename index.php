@@ -63,7 +63,7 @@ if ($pid && isset($_POST['get_worker_report'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="assets/style.css?v=1.4">
+    <link rel="stylesheet" href="assets/style.css?v=1.5">
 </head>
 <body class="container-fluid py-4" style="max-width: 1400px;">
 
