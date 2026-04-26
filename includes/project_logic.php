@@ -8,7 +8,26 @@ if ($uid) {
     }
 
     if ($pid) {
-        // عمليات POST
+        // New Features Logic
+        if (isset($_POST['add_journal'])) {
+            $stmt = $pdo->prepare("INSERT INTO daily_journal (project_id, entry_date, weather, progress_notes, issues_encountered, material_deliveries) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$pid, $_POST['j_date'], $_POST['weather'], $_POST['progress'], $_POST['issues'], $_POST['deliveries']]);
+            logActivity($pdo, $uid, $pid, "إضافة سجل يومي", "التاريخ: " . $_POST['j_date']);
+            header("Location: index.php"); exit();
+        }
+
+        if (isset($_POST['save_attendance'])) {
+            $att_date = $_POST['att_date'];
+            foreach ($_POST['status'] as $worker_id => $status) {
+                $notes = $_POST['notes'][$worker_id] ?? null;
+                $stmt = $pdo->prepare("INSERT INTO attendance (worker_id, project_id, attendance_date, status, notes) VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE status = VALUES(status), notes = VALUES(notes)");
+                $stmt->execute([$worker_id, $pid, $att_date, $status, $notes]);
+            }
+            logActivity($pdo, $uid, $pid, "تحديث كشف التحضير", "التاريخ: " . $att_date);
+            header("Location: index.php?att_date=" . $att_date); exit();
+        }
+
+        // Existing Logic
         if (isset($_POST['update_budget'])) {
             $pdo->prepare("UPDATE projects SET budget=? WHERE id=?")->execute([$_POST['budget'], $pid]);
             logActivity($pdo, $uid, $pid, "تحديث ميزانية", "الميزانية الجديدة: " . $_POST['budget']);
@@ -86,7 +105,7 @@ if ($uid) {
             header("Location: index.php"); exit();
         }
 
-        // عمليات GET (الحذف والتبديل)
+        // GET actions
         if (isset($_GET['del_mat'])) {
             $pdo->prepare("DELETE FROM materials WHERE id=? AND project_id=?")->execute([$_GET['del_mat'], $pid]);
             header("Location: index.php"); exit();

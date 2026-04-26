@@ -7,14 +7,18 @@ require_once 'includes/auth_logic.php';
 $uid = $_SESSION['user_id'] ?? null;
 if (isset($_GET['set_project'])) {
     $_SESSION['active_project'] = $_GET['set_project'];
-    header("Location: index.php");
+    // Redirect but keep other GET params if exist (like att_date)
+    $params = $_GET;
+    unset($params['set_project']);
+    $qs = count($params) > 0 ? "?" . http_build_query($params) : "";
+    header("Location: index.php" . $qs);
     exit();
 }
 $pid = $_SESSION['active_project'] ?? null;
 
 require_once 'includes/project_logic.php';
 
-// Logic for report_data (kept in index for now as it's specific to the report tab)
+// Logic for report_data
 $report_data = null;
 if ($pid && isset($_POST['get_worker_report'])) {
     $w_name = $_POST['worker_name'];
@@ -74,6 +78,10 @@ if ($pid && isset($_POST['get_worker_report'])) {
                 include 'templates/tab_budget.php';
                 include 'templates/tab_materials.php';
                 include 'templates/tab_workers.php';
+                include 'templates/tab_attendance.php';
+                include 'templates/tab_journal.php';
+                include 'templates/tab_gallery.php';
+                include 'templates/tab_tools.php';
                 include 'templates/tab_tasks.php';
                 include 'templates/tab_report.php';
                 include 'templates/tab_suppliers.php';
@@ -81,7 +89,7 @@ if ($pid && isset($_POST['get_worker_report'])) {
                 ?>
             </div>
         <?php else: ?>
-            <div class="card border-0 shadow-sm p-5 text-center bg-white rounded-4 animate__animated animate__pulse">
+            <div class="card border-0 shadow-sm p-5 text-center bg-white rounded-4 animate__animated animate__pulse glass">
                 <div class="bg-light bg-opacity-50 p-4 rounded-circle d-inline-block mx-auto mb-4">
                     <i class="bi bi-building-add display-1 text-primary"></i>
                 </div>

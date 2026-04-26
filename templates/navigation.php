@@ -1,4 +1,4 @@
-<div class="card border-0 shadow-sm p-2 mb-4 bg-white sticky-top shadow-sm" style="top: 10px; z-index: 1020;">
+<div class="card border-0 shadow-sm p-2 mb-4 glass sticky-top shadow-sm" style="top: 10px; z-index: 1020;">
     <ul class="nav nav-tabs border-0 m-0" id="mainTabs" role="tablist">
         <li class="nav-item">
             <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#t-budget">
@@ -16,13 +16,28 @@
             </button>
         </li>
         <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#t-sups">
-                <i class="bi bi-truck me-1"></i> الموردين
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#t-attendance">
+                <i class="bi bi-calendar-check me-1"></i> التحضير
             </button>
         </li>
         <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#t-tasks">
-                <i class="bi bi-list-check me-1"></i> المهام
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#t-journal">
+                <i class="bi bi-journal-check me-1"></i> اليوميات
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#t-gallery">
+                <i class="bi bi-images me-1"></i> المعرض
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#t-tools">
+                <i class="bi bi-tools me-1"></i> الأدوات
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#t-sups">
+                <i class="bi bi-truck me-1"></i> الموردين
             </button>
         </li>
         <li class="nav-item">
