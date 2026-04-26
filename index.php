@@ -5,12 +5,20 @@ require_once 'includes/functions.php';
 require_once 'includes/auth_logic.php';
 
 $uid = $_SESSION['user_id'] ?? null;
-if (isset($_GET['set_project'])) { $_SESSION['active_project'] = $_GET['set_project']; }
+if (isset($_GET['set_project'])) {
+    $_SESSION['active_project'] = $_GET['set_project'];
+    // Redirect but keep other GET params if exist (like att_date)
+    $params = $_GET;
+    unset($params['set_project']);
+    $qs = count($params) > 0 ? "?" . http_build_query($params) : "";
+    header("Location: index.php" . $qs);
+    exit();
+}
 $pid = $_SESSION['active_project'] ?? null;
 
 require_once 'includes/project_logic.php';
 
-// Logic for report_data (kept in index for now as it's specific to the report tab)
+// Logic for report_data
 $report_data = null;
 if ($pid && isset($_POST['get_worker_report'])) {
     $w_name = $_POST['worker_name'];
@@ -51,35 +59,50 @@ if ($pid && isset($_POST['get_worker_report'])) {
     <title>نظام إدارة الإعمار الاحترافي</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="assets/style.css">
 </head>
-<body class="container py-3">
+<body class="container py-4">
 
 <?php if (!$uid): ?>
     <?php include 'templates/login_form.php'; ?>
 <?php else: ?>
-    <?php include 'templates/header.php'; ?>
+    <div class="animate__animated animate__fadeIn">
+        <?php include 'templates/header.php'; ?>
 
-    <?php if ($pid): ?>
-        <?php include 'templates/navigation.php'; ?>
+        <?php if ($pid): ?>
+            <?php include 'templates/navigation.php'; ?>
 
-        <div class="tab-content">
-            <?php
-            include 'templates/tab_budget.php';
-            include 'templates/tab_materials.php';
-            include 'templates/tab_workers.php';
-            include 'templates/tab_tasks.php';
-            include 'templates/tab_report.php';
-            include 'templates/tab_suppliers.php';
-            include 'templates/tab_logs.php';
-            ?>
-        </div>
-    <?php else: ?>
-        <div class='alert alert-info card p-5 text-center shadow-sm'>
-            <i class="bi bi-building-add display-1 mb-3 text-primary"></i>
-            <h5>مرحباً بك، اختر مشروعاً من القائمة أو أضف مشروعاً جديداً للبدء</h5>
-        </div>
-    <?php endif; ?>
+            <div class="tab-content">
+                <?php
+                include 'templates/tab_budget.php';
+                include 'templates/tab_materials.php';
+                include 'templates/tab_workers.php';
+                include 'templates/tab_attendance.php';
+                include 'templates/tab_journal.php';
+                include 'templates/tab_gallery.php';
+                include 'templates/tab_tools.php';
+                include 'templates/tab_tasks.php';
+                include 'templates/tab_report.php';
+                include 'templates/tab_suppliers.php';
+                include 'templates/tab_logs.php';
+                ?>
+            </div>
+        <?php else: ?>
+            <div class="card border-0 shadow-sm p-5 text-center bg-white rounded-4 animate__animated animate__pulse glass">
+                <div class="bg-light bg-opacity-50 p-4 rounded-circle d-inline-block mx-auto mb-4">
+                    <i class="bi bi-building-add display-1 text-primary"></i>
+                </div>
+                <h3 class="fw-bold text-dark">مرحباً بك في نظام الإعمار</h3>
+                <p class="text-muted fs-5 mb-4">ابدأ باختيار مشروع من القائمة أعلاه أو أضف مشروعاً جديداً للبدء في إدارة أعمالك</p>
+                <div class="d-flex justify-content-center gap-2">
+                    <button class="btn btn-primary px-4 py-2 fw-bold" data-bs-toggle="modal" data-bs-target="#addP">
+                        <i class="bi bi-plus-lg me-2"></i>إضافة مشروعك الأول
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
 
     <?php include 'templates/modals.php'; ?>
 <?php endif; ?>

@@ -1,62 +1,66 @@
-<div class="row justify-content-center mt-5">
-    <div class="col-md-5 card p-4 shadow-lg border-0">
-        <div class="text-center mb-4">
-            <i class="bi bi-building text-primary display-4"></i>
-            <h3 class="mt-2 text-primary fw-bold">نظام إدارة الإعمار</h3>
-            <p class="text-muted">أهلاً بك، يرجى تسجيل الدخول للمتابعة</p>
-        </div>
+<div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-5">
+        <div class="card border-0 shadow-lg overflow-hidden animate__animated animate__zoomIn">
+            <div class="card-header bg-primary text-white p-4 text-center border-0">
+                <i class="bi bi-shield-lock display-4 d-block mb-2"></i>
+                <h4 class="fw-bold mb-0">نظام إدارة الإعمار</h4>
+                <p class="small text-white-50 mb-0">يرجى تسجيل الدخول للمتابعة</p>
+            </div>
+            <div class="card-body p-4 p-md-5">
+                <?php if (isset($error)): ?>
+                    <div class="alert alert-danger border-0 small py-2 mb-4"><?= $error ?></div>
+                <?php endif; ?>
+                <?php if (isset($success)): ?>
+                    <div class="alert alert-success border-0 small py-2 mb-4"><?= $success ?></div>
+                <?php endif; ?>
 
-        <?php if(isset($error)) echo "<div class='alert alert-danger p-2 border-0 small'><i class='bi bi-exclamation-triangle-fill me-2'></i>$error</div>"; ?>
-        <?php if(isset($success)) echo "<div class='alert alert-success p-2 border-0 small'><i class='bi bi-check-circle-fill me-2'></i>$success</div>"; ?>
-
-        <ul class="nav nav-pills nav-justified mb-4" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#lForm" type="button" role="tab">دخول</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-register-tab" data-bs-toggle="pill" data-bs-target="#rForm" type="button" role="tab">تسجيل</button>
-            </li>
-        </ul>
-
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="lForm" role="tabpanel">
-                <form method="POST">
+                <form method="POST" id="authForm">
                     <div class="mb-3">
-                        <label class="form-label small">اسم المستخدم</label>
+                        <label class="form-label small fw-bold text-muted">اسم المستخدم</label>
                         <div class="input-group">
-                            <span class="input-group-text bg-light border-0"><i class="bi bi-person"></i></span>
-                            <input name="username" class="form-control bg-light border-0" placeholder="أدخل اسم المستخدم" required>
+                            <span class="input-group-text border-0 bg-light"><i class="bi bi-person text-muted"></i></span>
+                            <input name="username" class="form-control border-0 bg-light py-2" placeholder="أدخل اسم المستخدم" required autofocus>
                         </div>
                     </div>
                     <div class="mb-4">
-                        <label class="form-label small">كلمة المرور</label>
+                        <label class="form-label small fw-bold text-muted">كلمة المرور</label>
                         <div class="input-group">
-                            <span class="input-group-text bg-light border-0"><i class="bi bi-lock"></i></span>
-                            <input type="password" name="password" class="form-control bg-light border-0" placeholder="أدخل كلمة المرور" required>
+                            <span class="input-group-text border-0 bg-light"><i class="bi bi-key text-muted"></i></span>
+                            <input type="password" name="password" class="form-control border-0 bg-light py-2" placeholder="********" required>
                         </div>
                     </div>
-                    <button name="login" class="btn btn-primary w-100 py-2 fw-bold">تسجيل الدخول</button>
+
+                    <button type="submit" name="login" id="submitBtn" class="btn btn-primary w-100 py-2 fw-bold shadow-sm mb-3">دخول للنظام</button>
+
+                    <div class="text-center mt-3">
+                        <span class="small text-muted" id="toggleText">ليس لديك حساب؟</span>
+                        <button type="button" class="btn btn-link btn-sm text-primary p-0 fw-bold" id="toggleBtn" onclick="toggleAuth()">إنشاء حساب جديد</button>
+                    </div>
                 </form>
             </div>
-            <div class="tab-pane fade" id="rForm" role="tabpanel">
-                <form method="POST">
-                    <div class="mb-3">
-                        <label class="form-label small">اسم المستخدم الجديد</label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-light border-0"><i class="bi bi-person-plus"></i></span>
-                            <input name="username" class="form-control bg-light border-0" placeholder="اختر اسم مستخدم" required>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label small">كلمة المرور</label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-light border-0"><i class="bi bi-key"></i></span>
-                            <input type="password" name="password" class="form-control bg-light border-0" placeholder="اختر كلمة مرور قوية" required>
-                        </div>
-                    </div>
-                    <button name="register" class="btn btn-success w-100 py-2 fw-bold">إنشاء حساب جديد</button>
-                </form>
+            <div class="card-footer bg-light p-3 text-center border-0">
+                <p class="small text-muted mb-0">&copy; <?= date('Y') ?> نظام إدارة الإعمار الاحترافي</p>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+function toggleAuth() {
+    const btn = document.getElementById('submitBtn');
+    const text = document.getElementById('toggleText');
+    const toggleBtn = document.getElementById('toggleBtn');
+
+    if (btn.name === 'login') {
+        btn.name = 'register';
+        btn.textContent = 'تسجيل حساب جديد';
+        text.textContent = 'لديك حساب بالفعل؟';
+        toggleBtn.textContent = 'تسجيل الدخول';
+    } else {
+        btn.name = 'login';
+        btn.textContent = 'دخول للنظام';
+        text.textContent = 'ليس لديك حساب؟';
+        toggleBtn.textContent = 'إنشاء حساب جديد';
+    }
+}
+</script>
