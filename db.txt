@@ -1,4 +1,4 @@
--- Professional Construction Management System - Database Schema
+-- Professional Construction Management System - Database Schema v1.5
 
 Table: users
 CREATE TABLE `users` (
@@ -137,4 +137,26 @@ CREATE TABLE `attendance` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_attendance` (`worker_id`,`project_id`,`attendance_date`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+Table: milestones
+CREATE TABLE `milestones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_id` int(11) NOT NULL,
+  `milestone_name` varchar(255) NOT NULL,
+  `target_date` date NOT NULL,
+  `status` enum('pending','in_progress','completed') DEFAULT 'pending',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+Table: equipment
+CREATE TABLE `equipment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_id` int(11) NOT NULL,
+  `equipment_name` varchar(255) NOT NULL,
+  `worker_id` int(11) DEFAULT NULL,
+  `received_date` date DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

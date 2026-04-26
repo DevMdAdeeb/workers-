@@ -6,9 +6,9 @@
                     <i class="bi bi-building text-primary fs-3"></i>
                 </div>
                 <div class="flex-grow-1">
-                    <label class="small text-muted mb-1 d-block">المشروع النشط حالياً</label>
-                    <select onchange="location.href='?set_project='+this.value" class="form-select border-0 fw-bold fs-5 shadow-none p-0 bg-transparent" style="cursor: pointer; min-width: 200px;">
-                        <option value="">-- اختر المشروع --</option>
+                    <label class="small text-muted mb-1 d-block fw-bold">نظام إدارة الإعمار <span class="badge bg-accent text-white ms-2" style="font-size: 0.6rem; vertical-align: middle;">v1.5 PRO</span></label>
+                    <select onchange="location.href='index.php?set_project='+this.value" class="form-select border-0 fw-bold fs-5 shadow-none p-0 bg-transparent text-primary" style="cursor: pointer; min-width: 200px;">
+                        <option value="">-- اختر المشروع الحالي --</option>
                         <?php
                         $ps=$pdo->prepare("SELECT * FROM projects WHERE user_id = ?");
                         $ps->execute([$uid]);
@@ -18,8 +18,7 @@
                 </div>
             </div>
             <div class="d-flex align-items-center gap-3">
-                <!-- Theme Toggle -->
-                <div class="theme-switch-wrapper me-2" title="تبديل الوضع الليلي/النهاري">
+                <div class="theme-switch-wrapper" title="تبديل الوضع الليلي">
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" id="checkbox" />
                         <div class="slider"></div>
@@ -40,7 +39,7 @@
                 </div>
                 <div>
                     <span class="fw-bold d-block text-primary"><?= h($_SESSION['username']) ?></span>
-                    <span class="badge bg-success-subtle text-success small fw-normal">مسؤول النظام</span>
+                    <span class="badge bg-success bg-opacity-10 text-success small fw-bold">مرحبا بك</span>
                 </div>
             </div>
             <a href="?logout=1" class="btn btn-outline-danger border-0 p-2" title="تسجيل الخروج">

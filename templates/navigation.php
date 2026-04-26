@@ -21,8 +21,18 @@
             </button>
         </li>
         <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#t-milestones">
+                <i class="bi bi-calendar2-week me-1"></i> المواعيد
+            </button>
+        </li>
+        <li class="nav-item">
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#t-journal">
                 <i class="bi bi-journal-check me-1"></i> اليوميات
+            </button>
+        </li>
+        <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#t-equipment">
+                <i class="bi bi-truck-flatbed me-1"></i> المعدات
             </button>
         </li>
         <li class="nav-item">

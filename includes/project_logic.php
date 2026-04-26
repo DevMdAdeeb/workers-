@@ -8,6 +8,28 @@ if ($uid) {
     }
 
     if ($pid) {
+        // Milestones
+        if (isset($_POST['add_milestone'])) {
+            $pdo->prepare("INSERT INTO milestones (project_id, milestone_name, target_date, status) VALUES (?, ?, ?, ?)")
+                ->execute([$pid, $_POST['m_name'], $_POST['m_date'], $_POST['m_status']]);
+            header("Location: index.php"); exit();
+        }
+        if (isset($_GET['del_ms'])) {
+            $pdo->prepare("DELETE FROM milestones WHERE id=? AND project_id=?")->execute([$_GET['del_ms'], $pid]);
+            header("Location: index.php"); exit();
+        }
+
+        // Equipment
+        if (isset($_POST['add_equipment'])) {
+            $pdo->prepare("INSERT INTO equipment (project_id, equipment_name, worker_id, received_date) VALUES (?, ?, ?, ?)")
+                ->execute([$pid, $_POST['e_name'], $_POST['worker_id'] ?: null, $_POST['e_date']]);
+            header("Location: index.php"); exit();
+        }
+        if (isset($_GET['del_eq'])) {
+            $pdo->prepare("DELETE FROM equipment WHERE id=? AND project_id=?")->execute([$_GET['del_eq'], $pid]);
+            header("Location: index.php"); exit();
+        }
+
         // New Features Logic
         if (isset($_POST['add_journal'])) {
             $stmt = $pdo->prepare("INSERT INTO daily_journal (project_id, entry_date, weather, progress_notes, issues_encountered, material_deliveries) VALUES (?, ?, ?, ?, ?, ?)");
