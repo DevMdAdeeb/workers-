@@ -1,0 +1,190 @@
+:root {
+    /* Light Mode Variables */
+    --bg-main: #f8fafc;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --text-primary: #1e293b;
+    --text-muted: #64748b;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    --border-radius: 6px;
+    --success: #10b981;
+    --danger: #ef4444;
+    --card-bg: #ffffff;
+}
+
+[data-theme="dark"] {
+    /* Dark Mode Variables */
+    --bg-main: #0f172a;
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #f1f5f9;
+    --text-muted: #94a3b8;
+    --accent: #60a5fa;
+    --accent-hover: #3b82f6;
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --card-bg: #1e293b;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-image: radial-gradient(circle at 50% 0%, var(--accent) 0%, transparent 15%),
+                      radial-gradient(circle at 0% 100%, var(--success) 0%, transparent 10%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* Glassmorphism Effect */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--card-shadow);
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius) !important;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.nav-tabs {
+    border-radius: var(--border-radius);
+    padding: 6px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+}
+
+.nav-tabs .nav-link {
+    border-radius: var(--border-radius) !important;
+    border: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin: 2px;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--accent) !important;
+    color: white !important;
+}
+
+.btn {
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.form-control, .form-select {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--glass-border);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.table {
+    color: var(--text-primary);
+}
+
+.table thead th {
+    background: var(--accent);
+    color: white;
+    border: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    padding: 15px;
+}
+
+.table tbody td {
+    border-color: var(--glass-border);
+    padding: 15px;
+}
+
+/* Text color fixes */
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.badge {
+    border-radius: 4px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--text-muted);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .nav-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+}
+
+/* Theme Switcher Toggle */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+}
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 48px;
+}
+.theme-switch input {
+    display:none;
+}
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    background-color: white;
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 16px;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: var(--accent);
+}
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
