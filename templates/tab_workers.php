@@ -7,6 +7,12 @@
             <div class="col-md-3"><input name="task" class="form-control" placeholder="نوع العمل (مثلاً: سباك)"></div>
             <div class="col-md-3"><input name="address" class="form-control" placeholder="العنوان"></div>
             <div class="col-md-3">
+                <select name="work_period" class="form-select">
+                    <option value="full">يوم كامل</option>
+                    <option value="half">نصف يوم</option>
+                </select>
+            </div>
+            <div class="col-md-3">
                 <div class="input-group">
                     <span class="input-group-text small">مبلغ الاتفاق</span>
                     <input type="number" name="total" class="form-control" placeholder="0">
@@ -56,7 +62,11 @@
                             <small class="d-block"><?= htmlspecialchars($w['phone'] ?: '-') ?></small>
                             <small class="text-muted"><?= htmlspecialchars($w['address'] ?: '') ?></small>
                         </td>
-                        <td><span class="badge bg-light text-dark border"><?= htmlspecialchars($w['task_desc']) ?></span></td>
+                        <td>
+                            <span class="badge bg-light text-dark border"><?= htmlspecialchars($w['task_desc']) ?></span>
+                            <br>
+                            <small class="text-muted"><?= ($w['work_period'] == 'half' ? 'نصف يوم' : 'يوم كامل') ?></small>
+                        </td>
                         <td><span class="text-danger fw-bold"><?= number_format($rem) ?></span></td>
                         <td><small><?= $w['entry_date'] ?></small></td>
                         <td class="text-nowrap text-center">
@@ -66,6 +76,9 @@
                             <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#histM<?= $w['id'] ?>" title="سجل الدفعات">
                                 <i class="bi bi-journal-text"></i>
                             </button>
+                            <a href="worker_statement.php?wid=<?= $w['id'] ?>" target="_blank" class="btn btn-sm btn-outline-secondary" title="كشف حساب (طباعة)">
+                                <i class="bi bi-printer"></i>
+                            </a>
                             <a href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $w['phone']) ?>?text=<?= urlencode($wa_msg) ?>" target="_blank" class="btn btn-sm btn-outline-success">
                                 <i class="bi bi-whatsapp"></i>
                             </a>

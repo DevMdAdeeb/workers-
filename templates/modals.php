@@ -32,6 +32,9 @@ if ($pid) {
                     <div class="mb-3">
                         <input type="number" name="amt" class="form-control form-control-lg text-center fw-bold border-0 bg-light" placeholder="المبلغ" required autofocus>
                     </div>
+                    <div class="mb-3">
+                        <input type="date" name="p_date" class="form-control border-0 bg-light" value="<?= date('Y-m-d') ?>">
+                    </div>
                     <button name="add_pay" class="btn btn-primary w-100 py-2">تأكيد عملية الصرف</button>
                 </form>
             </div>
@@ -55,9 +58,28 @@ if ($pid) {
                     $payments = $pdo->query("SELECT * FROM worker_payments WHERE worker_id={$w['id']} ORDER BY payment_date DESC");
                     while($p = $payments->fetch()):
                     ?>
-                        <div class="list-group-item d-flex justify-content-between py-2 border-light small">
-                            <span class="text-muted"><?= $p['payment_date'] ?></span>
-                            <span class="fw-bold text-primary"><?= formatCurrency($p['amount']) ?></span>
+                        <div class="list-group-item py-2 border-light small">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <span class="text-muted"><?= $p['payment_date'] ?></span>
+                                <span class="fw-bold text-primary"><?= formatCurrency($p['amount']) ?></span>
+                            </div>
+                            <div class="d-flex gap-2 justify-content-end mt-1">
+                                <button class="btn btn-link btn-sm text-info p-0" data-bs-toggle="collapse" data-bs-target="#editPay<?= $p['id'] ?>"><i class="bi bi-pencil-square"></i></button>
+                                <form method="POST" onsubmit="return confirm('حذف هذه الدفعة؟')" class="d-inline">
+                                    <input type="hidden" name="pay_id" value="<?= $p['id'] ?>">
+                                    <button name="del_pay" class="btn btn-link btn-sm text-danger p-0"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </div>
+                            <div class="collapse mt-2" id="editPay<?= $p['id'] ?>">
+                                <form method="POST" class="bg-light p-2 rounded">
+                                    <input type="hidden" name="pay_id" value="<?= $p['id'] ?>">
+                                    <div class="row g-2">
+                                        <div class="col-6"><input type="number" name="amt" class="form-control form-control-sm" value="<?= $p['amount'] ?>" required></div>
+                                        <div class="col-6"><input type="date" name="p_date" class="form-control form-control-sm" value="<?= $p['payment_date'] ?>" required></div>
+                                        <div class="col-12"><button name="edit_pay" class="btn btn-sm btn-primary w-100">حفظ التعديل</button></div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     <?php endwhile; ?>
                 </div>
