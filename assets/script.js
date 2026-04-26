@@ -74,20 +74,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Tooltips Initialization (Bootstrap)
-    if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
-        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'));
-        tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
-    }
+    try {
+        if (typeof bootstrap !== 'undefined' && bootstrap.Tooltip) {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[title]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        }
+    } catch (e) { console.warn("Bootstrap Tooltip error:", e); }
 
     // Sidebar Navigation & Persistence
     const activeTab = localStorage.getItem('activeConstructionTab');
     if (activeTab) {
         const tabEl = document.querySelector(`button[data-bs-target="${activeTab}"]`);
         if (tabEl && typeof bootstrap !== 'undefined' && bootstrap.Tab) {
-            const tab = new bootstrap.Tab(tabEl);
-            tab.show();
+            try {
+                const tab = new bootstrap.Tab(tabEl);
+                tab.show();
+            } catch (e) { console.warn("Bootstrap Tab error:", e); }
         }
     }
 

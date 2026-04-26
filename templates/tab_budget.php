@@ -22,42 +22,42 @@
     $percent = $current_budget > 0 ? min(round(($total_spent / $current_budget) * 100), 100) : 0;
     ?>
 
-    <div class="row g-4 mb-4">
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100 bg-primary text-white overflow-hidden position-relative">
-                <div class="card-body p-4 position-relative" style="z-index: 2;">
-                    <h6 class="text-white-50 fw-bold mb-2 small uppercase">الميزانية المرصودة</h6>
-                    <h2 class="fw-bold mb-0"><?= number_format((float)$current_budget) ?> <small class="fs-6 fw-normal">ر.ي</small></h2>
-                    <button class="btn btn-sm btn-light bg-opacity-25 border-0 text-white mt-3 px-3 py-1" data-bs-toggle="collapse" data-bs-target="#editBudget">
+    <div class="row g-3 mb-4">
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm bg-primary text-white overflow-hidden position-relative mb-0 h-100">
+                <div class="card-body p-3 position-relative" style="z-index: 2;">
+                    <h6 class="text-white-50 fw-bold mb-1 small text-uppercase">الميزانية المرصودة</h6>
+                    <h3 class="fw-bold mb-0"><?= number_format((float)$current_budget) ?> <small class="fs-6 fw-normal">ر.ي</small></h3>
+                    <button class="btn btn-sm btn-light bg-opacity-25 border-0 text-white mt-2 px-3 py-1" data-bs-toggle="collapse" data-bs-target="#editBudget">
                         <i class="bi bi-pencil-square me-1"></i> تعديل
                     </button>
-                    <div class="collapse mt-3" id="editBudget">
-                        <form method="POST" class="d-flex gap-2">
-                            <input type="number" name="budget" class="form-control form-control-sm border-0" value="<?= $current_budget ?>" required>
+                    <div class="collapse mt-2" id="editBudget">
+                        <form method="POST" class="d-flex gap-2 p-2 bg-white bg-opacity-10 rounded-2">
+                            <input type="number" name="budget" class="form-control form-control-sm border-0" value="<?= $current_budget ?>" required style="background: white !important; color: black !important;">
                             <button name="update_budget" class="btn btn-sm btn-warning fw-bold px-3">حفظ</button>
                         </form>
                     </div>
                 </div>
-                <i class="bi bi-bank position-absolute end-0 bottom-0 text-white opacity-10" style="font-size: 6rem; margin-right: -10px; margin-bottom: -20px;"></i>
+                <i class="bi bi-bank position-absolute end-0 bottom-0 text-white opacity-10" style="font-size: 4rem; margin-right: -5px; margin-bottom: -10px;"></i>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100 bg-white">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm bg-white mb-0 h-100">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
                         <div>
-                            <h6 class="text-muted fw-bold mb-1 small uppercase">إجمالي المصروفات</h6>
-                            <h2 class="fw-bold text-dark mb-0"><?= number_format((float)$total_spent) ?> <small class="fs-6 fw-normal text-muted">ر.ي</small></h2>
+                            <h6 class="text-muted fw-bold mb-1 small text-uppercase">إجمالي المصروفات</h6>
+                            <h3 class="fw-bold text-dark mb-0"><?= number_format((float)$total_spent) ?> <small class="fs-6 fw-normal text-muted">ر.ي</small></h3>
                         </div>
-                        <div class="bg-danger bg-opacity-10 p-2 rounded-3">
-                            <i class="bi bi-cart-dash text-danger fs-4"></i>
+                        <div class="bg-danger bg-opacity-10 p-2 rounded-2">
+                            <i class="bi bi-cart-dash text-danger fs-5"></i>
                         </div>
                     </div>
-                    <div class="progress bg-light" style="height: 8px;">
+                    <div class="progress bg-light" style="height: 6px;">
                         <div class="progress-bar <?= $percent > 85 ? 'bg-danger' : 'bg-primary' ?>" style="width: <?= $percent ?>%"></div>
                     </div>
-                    <div class="d-flex justify-content-between mt-2 small">
+                    <div class="d-flex justify-content-between mt-1 small">
                         <span class="text-muted">نسبة الاستهلاك</span>
                         <span class="fw-bold <?= $percent > 85 ? 'text-danger' : 'text-primary' ?>"><?= $percent ?>%</span>
                     </div>
@@ -65,21 +65,21 @@
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100 bg-white">
-                <div class="card-body p-4">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm bg-white mb-0 h-100">
+                <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
                         <div>
-                            <h6 class="text-muted fw-bold mb-1 small uppercase">المتبقي المتوفر</h6>
-                            <h2 class="fw-bold <?= $remaining >= 0 ? 'text-success' : 'text-danger' ?> mb-0"><?= number_format((float)$remaining) ?> <small class="fs-6 fw-normal text-muted">ر.ي</small></h2>
+                            <h6 class="text-muted fw-bold mb-1 small text-uppercase">المتبقي المتوفر</h6>
+                            <h3 class="fw-bold <?= $remaining >= 0 ? 'text-success' : 'text-danger' ?> mb-0"><?= number_format((float)$remaining) ?> <small class="fs-6 fw-normal text-muted">ر.ي</small></h3>
                         </div>
-                        <div class="bg-success bg-opacity-10 p-2 rounded-3">
-                            <i class="bi bi-shield-check text-success fs-4"></i>
+                        <div class="bg-success bg-opacity-10 p-2 rounded-2">
+                            <i class="bi bi-shield-check text-success fs-5"></i>
                         </div>
                     </div>
-                    <p class="small text-muted mb-0">
+                    <p class="small text-muted mb-0" style="font-size: 0.75rem;">
                         <i class="bi bi-info-circle me-1"></i>
-                        <?= $remaining >= 0 ? 'أداء مالي جيد ضمن الميزانية' : 'تحذير: لقد تجاوزت الميزانية المحددة' ?>
+                        <?= $remaining >= 0 ? 'أداء مالي جيد' : 'تجاوز للميزانية' ?>
                     </p>
                 </div>
             </div>
