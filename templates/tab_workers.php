@@ -1,12 +1,11 @@
 <div class="tab-pane fade" id="t-works">
     <div class="card border-0 shadow-sm mb-4">
-        <div class="card-header bg-white border-0 pt-4 px-4">
+        <div class="card-header bg-transparent border-0 pt-4 px-4">
             <h5 class="fw-bold mb-0 text-primary"><i class="bi bi-person-plus me-2"></i>تسجيل عامل أو فني جديد</h5>
-            <p class="text-muted small mb-0">إدارة بيانات العمال والمستحقات المالية الخاصة بهم</p>
         </div>
         <div class="card-body p-4">
             <form method="POST" class="row g-3">
-                <div class="col-md-3">
+                <div class="col-md-4 col-lg-3">
                     <label class="form-label small fw-bold text-muted">اسم العامل</label>
                     <input name="w_name" class="form-control bg-light border-0 py-2" placeholder="الاسم الرباعي" required>
                 </div>
@@ -41,18 +40,17 @@
                     <label class="form-label small fw-bold text-muted">السلفة الأولى</label>
                     <input type="number" name="sufa" class="form-control bg-light border-0 py-2" placeholder="0">
                 </div>
-                <div class="col-md-3 mt-4 text-end d-flex align-items-end">
-                    <button name="add_worker" class="btn btn-primary w-100 py-2 shadow-sm"><i class="bi bi-save me-1"></i>حفظ البيانات</button>
+                <div class="col-md-12 mt-2 text-end">
+                    <button name="add_worker" class="btn btn-primary px-5 py-2 shadow-sm"><i class="bi bi-plus-circle me-1"></i>إضافة العامل</button>
                 </div>
             </form>
         </div>
     </div>
 
     <div class="card border-0 shadow-sm">
-        <div class="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+        <div class="card-header bg-transparent border-0 pt-4 px-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
             <div>
-                <h5 class="fw-bold mb-0 text-dark">كشف العمال والمدفوعات</h5>
-                <p class="text-muted small mb-0">متابعة مستمرة لمستحقات الفنيين والعمال</p>
+                <h5 class="fw-bold mb-0 text-primary">كشف العمال والمدفوعات</h5>
             </div>
             <div class="search-box">
                 <i class="bi bi-search"></i>
@@ -105,9 +103,6 @@
                                     <button class="btn btn-sm btn-info text-white" data-bs-toggle="modal" data-bs-target="#histM<?= $w['id'] ?>" title="السجل">
                                         <i class="bi bi-clock-history"></i>
                                     </button>
-                                    <a href="worker_statement.php?wid=<?= $w['id'] ?>" target="_blank" class="btn btn-sm btn-secondary" title="كشف حساب">
-                                        <i class="bi bi-printer"></i>
-                                    </a>
                                     <a href="?del_work=<?= $w['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('حذف بيانات العامل نهائياً؟')" title="حذف">
                                         <i class="bi bi-trash3"></i>
                                     </a>
