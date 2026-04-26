@@ -38,7 +38,7 @@
                         </form>
                     </div>
                 </div>
-                <i class="bi bi-bank position-absolute end-0 bottom-0 text-white opacity-10" style="font-size: 4rem; margin-right: -5px; margin-bottom: -10px;"></i>
+                <i class="bi bi-bank position-absolute end-0 bottom-0 text-white opacity-10" style="font-size: 2.5rem; margin-right: 10px; margin-bottom: 10px;"></i>
             </div>
         </div>
 

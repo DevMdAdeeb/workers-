@@ -6,39 +6,39 @@
         <div class="card-body p-4">
             <form method="POST" class="row g-3">
                 <div class="col-md-4 col-lg-3">
-                    <label class="form-label small fw-bold text-muted">اسم العامل</label>
-                    <input name="w_name" class="form-control bg-light border-0 py-2" placeholder="الاسم الرباعي" required>
+                    <label class="form-label small fw-bold">اسم العامل</label>
+                    <input name="w_name" class="form-control border-0 py-2" placeholder="الاسم الرباعي" required>
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label small fw-bold text-muted">رقم الهاتف</label>
-                    <input name="phone" class="form-control bg-light border-0 py-2" placeholder="7xxxxxxxx">
+                    <label class="form-label small fw-bold">رقم الهاتف</label>
+                    <input name="phone" class="form-control border-0 py-2" placeholder="7xxxxxxxx">
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label small fw-bold text-muted">نوع العمل / الاختصاص</label>
-                    <input name="task" class="form-control bg-light border-0 py-2" placeholder="مثلاً: بناء، مليس...">
+                    <label class="form-label small fw-bold">نوع العمل / الاختصاص</label>
+                    <input name="task" class="form-control border-0 py-2" placeholder="مثلاً: بناء، مليس...">
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label small fw-bold text-muted">تاريخ البدء</label>
-                    <input type="date" name="w_date" class="form-control bg-light border-0 py-2" value="<?= date('Y-m-d') ?>">
+                    <label class="form-label small fw-bold">تاريخ البدء</label>
+                    <input type="date" name="w_date" class="form-control border-0 py-2" value="<?= date('Y-m-d') ?>">
                 </div>
                 <div class="col-md-3">
-                    <label class="form-label small fw-bold text-muted">العنوان</label>
-                    <input name="address" class="form-control bg-light border-0 py-2" placeholder="الحي / الشارع">
+                    <label class="form-label small fw-bold">العنوان</label>
+                    <input name="address" class="form-control border-0 py-2" placeholder="الحي / الشارع">
                 </div>
                 <div class="col-md-2">
-                    <label class="form-label small fw-bold text-muted">فترة الدوام</label>
-                    <select name="work_period" class="form-select bg-light border-0 py-2">
+                    <label class="form-label small fw-bold">فترة الدوام</label>
+                    <select name="work_period" class="form-select border-0 py-2">
                         <option value="full">يوم كامل</option>
                         <option value="half">نصف يوم</option>
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <label class="form-label small fw-bold text-muted">مبلغ الاتفاق (ر.ي)</label>
-                    <input type="number" name="total" class="form-control bg-light border-0 py-2" placeholder="0">
+                    <label class="form-label small fw-bold">مبلغ الاتفاق (ر.ي)</label>
+                    <input type="number" name="total" class="form-control border-0 py-2" placeholder="0">
                 </div>
                 <div class="col-md-2">
-                    <label class="form-label small fw-bold text-muted">السلفة الأولى</label>
-                    <input type="number" name="sufa" class="form-control bg-light border-0 py-2" placeholder="0">
+                    <label class="form-label small fw-bold">السلفة الأولى</label>
+                    <input type="number" name="sufa" class="form-control border-0 py-2" placeholder="0">
                 </div>
                 <div class="col-md-12 mt-2 text-end">
                     <button name="add_worker" class="btn btn-primary px-5 py-2 shadow-sm"><i class="bi bi-plus-circle me-1"></i>إضافة العامل</button>
@@ -54,7 +54,7 @@
             </div>
             <div class="search-box">
                 <i class="bi bi-search"></i>
-                <input type="text" class="form-control table-search border-0 bg-light" data-target="#workersTable" placeholder="بحث عن عامل...">
+                <input type="text" class="form-control table-search border-0" data-target="#workersTable" placeholder="بحث عن عامل...">
             </div>
         </div>
         <div class="card-body p-0">
