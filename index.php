@@ -62,18 +62,16 @@ if ($pid && isset($_POST['get_worker_report'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="assets/style.css?v=1.2">
 </head>
-<body class="container py-4">
+<body class="container-fluid py-4" style="max-width: 1400px;">
 
 <?php if (!$uid): ?>
     <?php include 'templates/login_form.php'; ?>
 <?php else: ?>
-    <div class="animate__animated animate__fadeIn">
+    <div class="animate__animated animate__fadeIn px-md-4">
         <?php include 'templates/header.php'; ?>
 
         <?php if ($pid): ?>
-            <?php include 'templates/navigation.php'; ?>
-
-            <div class="tab-content mt-4">
+            <div class="tab-content">
                 <?php
                 include 'templates/tab_budget.php';
                 include 'templates/tab_materials.php';

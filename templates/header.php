@@ -1,14 +1,14 @@
-<div class="row g-3 mb-4 align-items-stretch">
-    <div class="col-md-7 col-lg-8">
-        <div class="card p-3 h-100 flex-row align-items-center justify-content-between border-0 glass">
-            <div class="d-flex align-items-center flex-grow-1">
-                <div class="bg-primary bg-opacity-10 p-3 rounded-3 me-3 d-none d-sm-block">
-                    <i class="bi bi-building text-primary fs-3"></i>
+<div class="top-header mb-4">
+    <div class="card p-2 border-0 glass shadow-sm">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+            <!-- Right: Brand & Project Selection -->
+            <div class="d-flex align-items-center gap-3">
+                <div class="bg-primary bg-opacity-10 p-2 rounded-2 d-none d-sm-block">
+                    <i class="bi bi-building text-primary fs-5"></i>
                 </div>
-                <div class="flex-grow-1">
-                    <label class="small text-muted mb-1 d-block fw-bold">نظام إدارة الإعمار <span class="badge bg-accent text-white ms-2" style="font-size: 0.6rem; vertical-align: middle;">v1.5 PRO</span></label>
-                    <select onchange="location.href='index.php?set_project='+this.value" class="form-select border-0 fw-bold fs-5 shadow-none p-0 bg-transparent text-primary" style="cursor: pointer; min-width: 200px;">
-                        <option value="">-- اختر المشروع الحالي --</option>
+                <div style="min-width: 180px;">
+                    <select onchange="location.href='index.php?set_project='+this.value" class="form-select border-0 fw-bold shadow-none bg-transparent text-primary p-0" style="cursor: pointer;">
+                        <option value="">-- اختر المشروع --</option>
                         <?php
                         $ps=$pdo->prepare("SELECT * FROM projects WHERE user_id = ?");
                         $ps->execute([$uid]);
@@ -17,34 +17,46 @@
                     </select>
                 </div>
             </div>
-            <div class="d-flex align-items-center gap-3">
-                <div class="theme-switch-wrapper" title="تبديل الوضع الليلي">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <div class="slider"></div>
-                    </label>
-                </div>
-                <button class="btn btn-primary shadow-sm d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#addP">
-                    <i class="bi bi-plus-lg"></i>
-                    <span class="d-none d-md-inline">مشروع جديد</span>
+
+            <!-- Left: Actions & Profile -->
+            <div class="d-flex align-items-center gap-2">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="header-icon-btn" title="تبديل الوضع">
+                    <i class="bi bi-moon-stars-fill"></i>
                 </button>
+
+                <!-- Sidebar Toggle (Only if project selected) -->
+                <?php if($pid): ?>
+                <button id="sidebar-toggle" class="header-icon-btn" title="القائمة">
+                    <i class="bi bi-list fs-4"></i>
+                </button>
+                <?php endif; ?>
+
+                <!-- Add Project -->
+                <button class="header-icon-btn" data-bs-toggle="modal" data-bs-target="#addP" title="مشروع جديد">
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+
+                <!-- User Profile & Logout -->
+                <div class="d-flex align-items-center bg-light bg-opacity-50 rounded-2 px-2 py-1 gap-2 border">
+                    <span class="small fw-bold text-dark d-none d-md-inline"><?= h($_SESSION['username']) ?></span>
+                    <a href="?logout=1" class="text-danger" title="تسجيل الخروج">
+                        <i class="bi bi-box-arrow-right fs-5"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-5 col-lg-4">
-        <div class="card p-3 h-100 flex-row justify-content-between align-items-center border-0 glass">
-            <div class="d-flex align-items-center">
-                <div class="bg-secondary bg-opacity-10 rounded-circle p-2 me-3">
-                    <i class="bi bi-person-circle text-secondary fs-4"></i>
-                </div>
-                <div>
-                    <span class="fw-bold d-block text-primary"><?= h($_SESSION['username']) ?></span>
-                    <span class="badge bg-success bg-opacity-10 text-success small fw-bold">مرحبا بك</span>
-                </div>
-            </div>
-            <a href="?logout=1" class="btn btn-outline-danger border-0 p-2" title="تسجيل الخروج">
-                <i class="bi bi-box-arrow-right fs-4"></i>
-            </a>
-        </div>
+</div>
+
+<!-- Sidebar Navigation -->
+<div id="sidebar-overlay" class="sidebar-overlay"></div>
+<div id="sidebar" class="sidebar shadow-lg">
+    <div class="sidebar-header">
+        <h5 class="fw-bold mb-0 text-primary">القائمة الرئيسية</h5>
+        <button id="sidebar-close" class="btn btn-sm btn-light border-0">
+            <i class="bi bi-x-lg"></i>
+        </button>
     </div>
+    <?php if($pid) include 'templates/navigation.php'; ?>
 </div>
